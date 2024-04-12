@@ -127,7 +127,7 @@ paths:
       operationId: listUser
       responses:
         "200":
-          description: Successful update
+          description: Successful search
           content:
             application/json:
               schema:
@@ -346,7 +346,7 @@ paths:
                   extension: pdf
                   fk_user_id: 1
         "404":
-          description: File id not found
+          description: User id not found
         "422":
           description: Validation exception
   /file/{fileId}:
@@ -397,7 +397,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful find
+          description: Successful summarizing
           content:
             application/json:
               schema:
@@ -416,7 +416,7 @@ paths:
       tags:
         - summar
       summary: Rate a summar by id
-      description: Rate a summar by id
+      description: Rate a summar
       operationId: rateSummarById
       parameters:
         - name: summarId
@@ -425,9 +425,16 @@ paths:
           required: true
           schema:
             type: string
+        - name: rate
+          in: query
+          description: "The summar rate"
+          required: true
+          schema:
+            type: number
+            format: float
       responses:
         "200":
-          description: Successful find
+          description: Successful rating
         "404":
           description: Summar id not found
         "422":
