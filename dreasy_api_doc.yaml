@@ -1,0 +1,531 @@
+openapi: 3.0.3
+info:
+  title: Dr Easy
+  version: 1.0.0
+servers:
+  - url: https://localhost:8080
+tags:
+  - name: user
+    description: Everything about users
+  - name: file
+    description: Everything about files
+  - name: summar
+    description: Everything about summars
+paths:
+  /user/login:
+    post:
+      tags:
+        - user
+      summary: Log in the user
+      description: Authenticate an existing user by email and password to access protected resources. Requires a valid email address and password. Returns an authentication token upon successful authentication.
+      operationId: authUser
+      parameters:
+        - name: email
+          in: query
+          description: The user email for login
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The user password for login
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: You will need to pass this information to authenticate an user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              email: johndoe@dreasy.com.br
+              password: 123456
+      responses:
+        "200":
+          description: Successful authentication
+          headers:
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                id: 1
+                token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid email or password
+        "404":
+          description: Email not found
+        "422":
+          description: Validation exception
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create a new user
+      description: Create a new user
+      operationId: createUser
+      parameters:
+        - name: name
+          in: query
+          description: The user name for register
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: The user email for register
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The user password for register
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Create a new user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              name: John Doe
+              email: johndoe@dreasy.com.br
+              password: 123456
+      responses:
+        "200":
+          description: Successful create
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                id: 1
+                name: John Doe
+                email: johndoe@dreasy.com.br
+        "400":
+          description: Invalid email or password
+        "404":
+          description: Info not found
+        "422":
+          description: Validation exception
+    get:
+      tags:
+        - user
+      summary: List all users
+      description: List all users
+      operationId: listUser
+      responses:
+        "200":
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+              example:
+                - id: 1
+                  name: Joseph Doe
+                  email: josephdoe@dreasy.com.br
+                - id: 2
+                  name: Not Joseph Doe
+                  email: josephdoe@dreasy.com.br
+                - id: 3
+                  name: John Doe
+                  email: johndoe@dreasy.com.br
+        "422":
+          description: Validation exception
+  /user/{userId}:
+    get:
+      tags:
+        - user
+      summary: Get an existing user by Id
+      description: Get an existing user by Id
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: "The user id that needs to be found"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                id: 1
+                name: Joseph Doe
+                email: josephdoe@dreasy.com.br
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+    delete:
+      tags:
+        - user
+      summary: Delete an existing user by Id
+      description: Delete an existing user by Id
+      operationId: deleteUserById
+      parameters:
+        - name: userId
+          in: path
+          description: "The user id that needs to be deleted"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful delete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+    patch:
+      tags:
+        - user
+      summary: Update an existing user by Id
+      description: Update an existing user by Id
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: "The user id that needs to be deleted"
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: "The user name that needs to be patched"
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: "The user email that needs to be patched"
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: "The user password that needs to be patched"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existing user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              name: Joseph Doe
+              email: josephdoe@dreasy.com.br
+              password: notdumbasjohndoe123456
+      responses:
+        "200":
+          description: Successful update
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                id: 1
+                name: Joseph Doe
+                email: josephdoe@dreasy.com.br
+        "400":
+          description: Invalid email
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+  /file/{userId}:
+    post:
+      tags:
+        - file
+      summary: Upload a file to the server
+      description: Upload a file to the server
+      operationId: uploadFile
+      parameters:
+        - name: userId
+          in: path
+          description: "The user id that needs to be linked"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existing user
+        required: false
+        content:
+          application/pdf:
+            schema:
+              type: string
+              format: binary
+          ? application/vnd.openxmlformats-officedocument.wordprocessingml.document
+          : schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Successful upload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                name: ata_01_timestamp
+                path: /root/files/
+                extension: pdf
+                fk_user_id: 1
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+    get:
+      tags:
+        - file
+      summary: List all files by user id
+      description: List all files by user id
+      operationId: listFilesByUserId
+      parameters:
+        - name: userId
+          in: path
+          description: "The files that need to be found by user id"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/File"
+              example:
+                - id: 1
+                  name: ata_01_timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+                - id: 2
+                  name: ata_02_timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+                - id: 3
+                  name: ata_03timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+  /file/{fileId}:
+    get:
+      tags:
+        - file
+      summary: Get a file by id
+      description: Get a file by id
+      operationId: getFileById
+      parameters:
+        - name: fileId
+          in: path
+          description: "The file id that need to be found"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                name: ata_01_timestamp
+                path: /root/files/
+                content: bla...bla...bla...
+                extension: pdf
+                fk_user_id: 1
+        "404":
+          description: File id not found
+        "422":
+          description: Validation exception
+  /summar/{fileId}:
+    get:
+      tags:
+        - summar
+      summary: Summar a file by file id
+      description: Summar a file by file id
+      operationId: getSummarById
+      parameters:
+        - name: fileId
+          in: path
+          description: "The file id that need to be summarized"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful summarizing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                content: bla...bla...bla...
+                rate: none
+                fk_file_id: 1
+        "404":
+          description: File id not found
+        "422":
+          description: Validation exception
+  /summar/{summarId}:
+    patch:
+      tags:
+        - summar
+      summary: Rate a summar by id
+      description: Rate a summar
+      operationId: rateSummarById
+      parameters:
+        - name: summarId
+          in: path
+          description: "The summar id that needs to be rated"
+          required: true
+          schema:
+            type: string
+        - name: rate
+          in: query
+          description: "The summar rate"
+          required: true
+          schema:
+            type: number
+            format: float
+      responses:
+        "200":
+          description: Successful rating
+        "404":
+          description: Summar id not found
+        "422":
+          description: Validation exception
+components:
+  schemas:
+    User:
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: johndoe@dreasy.com.br
+        password:
+          type: string
+          format: password
+          example: 123456
+      xml:
+        name: user
+    File:
+      required:
+        - name
+        - path
+        - extension
+        - fk_user_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: Ata
+        path:
+          type: string
+          example: /root/files/
+        extension:
+          type: string
+          example: pdf
+        fk_user_id:
+          type: integer
+          format: int64
+          example: 1
+          $ref: "#/components/schemas/User"
+      xml:
+        name: file
+    Summar:
+      required:
+        - fk_file_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        content:
+          type: string
+          example: bla...bla...bla...
+        rate:
+          type: number
+          format: float
+          example: 3.3
+        fk_file_id:
+          type: integer
+          format: int64
+          example: 1
+          $ref: "#/components/schemas/File"
+      xml:
+        name: file
+  securitySchemes:
+    user_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:8080/oauth/authorize
+          scopes:
+            write:users: modify infos in your account
+            read:users: read your infos
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
