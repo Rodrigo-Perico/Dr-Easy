@@ -132,6 +132,8 @@ paths:
             application/json:
               schema:
                 type: array
+                items:
+                  $ref: "#/components/schemas/User"
               example:
                 - id: 1
                   name: Joseph Doe
@@ -255,6 +257,181 @@ paths:
           description: User id not found
         "422":
           description: Validation exception
+  /file/{userId}:
+    post:
+      tags:
+        - file
+      summary: Upload a file to the server
+      description: Upload a file to the server
+      operationId: uploadFile
+      parameters:
+        - name: userId
+          in: path
+          description: "The user id that needs to be linked"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existing user
+        required: false
+        content:
+          application/pdf:
+            schema:
+              type: string
+              format: binary
+          ? application/vnd.openxmlformats-officedocument.wordprocessingml.document
+          : schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Successful upload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                name: ata_01_timestamp
+                path: /root/files/
+                extension: pdf
+                fk_user_id: 1
+        "404":
+          description: User id not found
+        "422":
+          description: Validation exception
+    get:
+      tags:
+        - file
+      summary: List all files by user id
+      description: List all files by user id
+      operationId: listFilesByUserId
+      parameters:
+        - name: userId
+          in: path
+          description: "The files that need to be found by user id"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/File"
+              example:
+                - id: 1
+                  name: ata_01_timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+                - id: 2
+                  name: ata_02_timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+                - id: 3
+                  name: ata_03timestamp
+                  path: /root/files/
+                  content: bla...bla...bla...
+                  extension: pdf
+                  fk_user_id: 1
+        "404":
+          description: File id not found
+        "422":
+          description: Validation exception
+  /file/{fileId}:
+    get:
+      tags:
+        - file
+      summary: Get a file by id
+      description: Get a file by id
+      operationId: getFileById
+      parameters:
+        - name: fileId
+          in: path
+          description: "The file id that need to be found"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                name: ata_01_timestamp
+                path: /root/files/
+                content: bla...bla...bla...
+                extension: pdf
+                fk_user_id: 1
+        "404":
+          description: File id not found
+        "422":
+          description: Validation exception
+  /summar/{fileId}:
+    get:
+      tags:
+        - summar
+      summary: Summar a file by file id
+      description: Summar a file by file id
+      operationId: getSummarById
+      parameters:
+        - name: fileId
+          in: path
+          description: "The file id that need to be summarized"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+              example:
+                id: 1
+                content: bla...bla...bla...
+                rate: none
+                fk_file_id: 1
+        "404":
+          description: File id not found
+        "422":
+          description: Validation exception
+  /summar/{summarId}:
+    patch:
+      tags:
+        - summar
+      summary: Rate a summar by id
+      description: Rate a summar by id
+      operationId: rateSummarById
+      parameters:
+        - name: summarId
+          in: path
+          description: "The summar id that needs to be rated"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful find
+        "404":
+          description: Summar id not found
+        "422":
+          description: Validation exception
 components:
   schemas:
     User:
@@ -281,6 +458,57 @@ components:
           example: 123456
       xml:
         name: user
+    File:
+      required:
+        - name
+        - path
+        - extension
+        - fk_user_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: Ata
+        path:
+          type: string
+          example: /root/files/
+        extension:
+          type: string
+          example: pdf
+        fk_user_id:
+          type: integer
+          format: int64
+          example: 1
+          $ref: "#/components/schemas/User"
+      xml:
+        name: file
+    Summar:
+      required:
+        - fk_file_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        content:
+          type: string
+          example: bla...bla...bla...
+        rate:
+          type: number
+          format: float
+          example: 3.3
+        fk_file_id:
+          type: integer
+          format: int64
+          example: 1
+          $ref: "#/components/schemas/File"
+      xml:
+        name: file
   securitySchemes:
     user_auth:
       type: oauth2
