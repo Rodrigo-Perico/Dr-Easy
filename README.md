@@ -1,4 +1,8 @@
 # Dr.Easy
+## Propósito do projeto
+
+Esse projeto está sendo realizado no quinto semestre da faculdade de Sistemas de Informação para matéria de Projeto Integrador V, pelos colaboradores desse repositório.
+
 
 ## Requisitos
 
