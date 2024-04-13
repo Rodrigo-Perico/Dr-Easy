@@ -24,6 +24,9 @@ jobs:
       - name: Check Python Install
         run: python --version
 
+      - name: Check location
+        run: ls -la
+
       # - name: Install dependencies
       #   run: |
       #     python -m pip install --upgrade pip
