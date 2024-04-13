@@ -34,4 +34,5 @@ jobs:
 
       - name: Run tests
         run: |
+          ls -la
           python /home/runner/work/backend/manage.py test
