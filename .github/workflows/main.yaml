@@ -34,4 +34,4 @@ jobs:
 
       - name: Run tests
         run: |
-          python ./backend/manage.py test
+          python /home/runner/work/backend/manage.py test
