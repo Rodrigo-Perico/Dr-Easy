@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PI5</title>
+</head>
+<body>
+    <h1>Upload de Arquivo</h1>
+    <form action="/upload/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
