@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+	FLUXO
+
+
+	ONDE FICA CASOS QUE NAO SAO AVERBADOS
+
+	
+	PORQUE NAO TEMOS ARQUIVOS ANTES 
+
+	refin pode ter travado, suposicao
+	segund a suposicao a parcela dele é 100 reais que retornou no 06, mas a parcela aqui dentro é 200, logo, averbacao parcial
+	não tem fluxo para isso, na pratica, a parcela precisa ser igual ao averbado
+	averbei parcialmente->cancelo o refin, pq n consigo averb total, travo refin por algum motivo 
+	
+
+
+eroo tecnico pontual, faz na mao postivos
+
+
+
+
+scc plataforma
+especie -> 
+já tinha passado pelo 41 , oq subimos para o banco, nao consigo registrar 
+nao tem como fzr hidtorico, teria que rastrear, como n é um grande fluxo, e como tds as op estao averbadas 
+refin da problema 
+refin é p garantia do troco p cliente 
+se n concluir o 06 em 5 dias -> conbrar a intutuicao 
+colocar o 316 e 317
+
+ate o 040 fazendo so consulta , n necessariamente foi aprovado, ou passou p mesa de credito e foi p cip, o que seria o start p controlar averb
+seriam op que tem o pagamento efetuado, nr_portabilidade -> gerei a proposta e mandei p cip -> busca td q foi p cip, n interessa se simulou e n foi p cip
+se teve pagamento do str-> pagamento da ted para o banco origem , 
+n da p considerar q n averbou, tem q gerar o contrato de portabilidade no 06-> averbou 
+teve 41 mas n teve o 06 ai n esta aervbado, 41 -> 06 
+teve a reservsa 041 sim teve a reserva 06 nao entao nao averbado
+teve o retorno do 06 sim ent averbado 
+tem no 041 mas nao no 06 -> nao averbado 
+quarta feira sem vem massa boa 

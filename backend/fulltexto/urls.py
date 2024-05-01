@@ -1,10 +1,9 @@
 from django.urls import path, include
-
-from .views import Homeresposta, Upload_success, Homepageupload
+from . import views
+from .views import Homepageupload, Homeresposta
 
 urlpatterns = [
-    path("", Homepageupload.as_view(),name='homepage'),
-    path('upload/', Homepageupload.as_view(), name='upload'),
-    path('resposta/', Homeresposta.as_view(), name='resposta'),
-    path('upload_success/', Upload_success.as_view(), name='upload_success'),
+    path("", Homepageupload.as_view(), name='homepage'),
+    path("uploaded/<int:id>/", Homeresposta.as_view(), name='uploaded_text'),
+
 ]
