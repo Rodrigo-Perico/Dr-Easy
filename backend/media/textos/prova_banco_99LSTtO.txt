@@ -1,0 +1,17 @@
+Luiz Augusto Dos Santos Zamudio 22001073
+Victor kyoto Kurata 22011995
+
+show dbs
+use OLX
+
+1)
+db.anuncios.find({categoria:"ELETRODOMÉSTICOS"})
+
+2)db.anuncios.find({"categoria": { '$regex': /^eletrodomésticos$/i}})
+
+3)db.anuncios.aggregate([{$group:{_id:["$categoria"], total: {$sum:{$multiply:["$qtdeDisponivel", "$precoVenda"]}}}}])
+
+
+4)db.anuncios.find({"titulo": {'regex': '.phone.'}})
+
+5) db.anuncios.find({}, {_id: 0, qtdeDisponivel: 0, marca: 0, categoria: 0}).sort({"categoria": 1})

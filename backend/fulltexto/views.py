@@ -6,8 +6,6 @@ from .utils import preprocessamento, extrair_melhores_frases, summerIA
 import chardet
 # Create your views here.
 
-
-
 class Homeresposta(TemplateView):
     template_name = 'homeresposta.html'
 
@@ -23,8 +21,10 @@ class Homeresposta(TemplateView):
 
         # Se o queryset não estiver vazio, pegue o primeiro objeto
         if texto_atualizado_queryset.exists():
-            texto_atualizado_obj = texto_atualizado_queryset.first()
-            context['texto_atualizado'] = texto_atualizado_obj.texto_atualizado
+
+            #texto_atualizado_obj = texto_atualizado_queryset.first()
+            #context['texto_atualizado'] = texto_atualizado_obj.texto_atualizado
+            context['texto_atualizado'] = texto_atualizado_queryset
         else:
             context['texto_atualizado'] = None
 

@@ -19,15 +19,15 @@
   </div>
 
   <div class="response-square">
-    <!--<h1>Upload Successful!</h1> -->
-
-    <!--<h2>Texto Original:</h2>
-    <pre>{{ texto_original }}</pre>
-    -->
     <br>
-    <!--<pre>{{ texto_formatado }}</pre>-->
-   h1>Texto Enviado</h1>
-    <p>{{ texto_atualizado }}</p>
+   {% if texto_atualizado %}
+    {% for texto_atualizado_obj in texto_atualizado %}
+
+        <p>{{ texto_atualizado_obj.texto_atualizado }}</p>
+    {% endfor %}
+  {% else %}
+    <p>Nenhum texto atualizado encontrado.</p>
+  {% endif %}
   </div>
 </body>
 </html>

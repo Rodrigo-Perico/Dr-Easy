@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>PI5</title>
+    <title>Dr. Easy</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../static/imgs/lawyer_86193.ico">
+
 </head>
 <body>
-    <h1>Upload de Arquivo</h1>
+ <div class="background-container">
+    <div class="header">
+      <div class="logo">
+        <a href="#"><img src="../static/imgs/logo.png" alt="Logo"></a>
+         <a id="LogoNome" href="#">Dr  Easy</a>
+      </div>
+      <div class="linksNav">
+        <a href="telaLogin">Login</a>
+        <a href="telaCadastro">Cadastrar</a>
+        <a href="#contato">Contato</a>
+        <a href="#sobreNos">Sobre</a>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Transforme Arquivos em Resumos Instantâneos</h1>
+      <p>Faça o upload de qualquer documento e obtenha um resumo instantâneo em segundos. Simplifique a sua vida com Dr. Easy®</p>
     <form action="/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="file" accept=".txt">
-        <br>
-        <button type="submit">Enviar</button>
-    </form>
+    {% csrf_token %}
+    <!-- Campo de arquivo escondido -->
+    <input type="file" name="file" id="file-input" accept=".txt">
+
+    <!-- Botão estilizado para acionar o input de arquivo -->
+    <button type="button" class="button-file" onclick="document.getElementById('file-input').click();">
+        Selecionar Arquivo
+    </button>
+
+    <button type="submit">Enviar</button>
+</form>
+    </div>
+  </div>
+  <div class="features-section">
+    <h2>Por que escolher o Doctor Easy?</h2>
+    <div class="features">
+      <div class="feature">
+        <img src="../static/imgs/facilDeUsar.png" alt="Ícone Simples de Usar">
+        <h3>Simples de Usar</h3>
+        <p>Faça o upload do arquivo e pronto! Não há necessidade de configurar nada complexo.</p>
+      </div>
+      <div class="feature">
+        <img src="../static/imgs/Raio.png" alt="Ícone Rápido">
+        <h3>Rápido e preciso</h3>
+        <p>Obtenha seu resumo em questão de segundos e economize tempo valioso.</p>
+      </div>
+      <div class="feature">
+        <img src="../static/imgs/180163.png" alt="Icone qualquer lugar">
+        <h3>Acesso de qualquer lugar</h3>
+        <p>Nossa tecnologia garante resumos precisos, mantendo a essência do seu conteúdo original.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sobreNos" id="sobreNos">
+    <h2>Sobre nós</h2>
+    <p>Nós somos um site que tem como objetivo resumir documentos na área jurídica,
+      e temos como proposta fornecer um parecer inicial para contextuializar sobre o documento
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, deserunt numquam reiciendis ratione aliquid expedita quo
+      sit debitis iure nulla similique aspernatur assumenda veritatis quae adipisci necessitatibus ipsa aut odio? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Sunt ut error fugiat velit, ratione eveniet optio quidem animi dolore debitis autem odio ullam atque laudantium consequuntur. Ducimus aut magnam praesentium. Lorem ipsum dolor sit
+      amet consectetur adipisicing elit. Inventore ex odio saepe minus, error sunt quis, impedit similique aliquam eligendi animi fugiat assumenda voluptates iusto neque hic dolores nisi corrupti.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde minus sit enim, debitis delectus neque nihil sunt quod eius aut, laudantium fugiat dolores numquam, doloribus fuga maxime aliquid natus. Reiciendis.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, harum quasi inventore fugiat quidem dolores iure necessitatibus dignissimos facilis eos optio earum, fugit molestias facere molestiae quos expedita pariatur quia!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor id a recusandae! Alias, aliquid laborum sint, officia, accusamus reiciendis expedita quisquam iste dolore possimus ipsum aliquam. Necessitatibus officiis expedita molestiae?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero perspiciatis aut excepturi hic quibusdam qui dolor sequi, quas distinctio provident ipsa veritatis architecto consequatur alias, error quis ullam quae. Omnis?
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis esse maiores, ad ea natus fugiat libero dicta tempora omnis similique voluptate. Voluptatum fuga nobis necessitatibus vitae perferendis assumenda architecto ducimus.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius accusantium laboriosam, eveniet odit qui dignissimos nam tempore vitae minus porro odio itaque inventore aliquam quam culpa maiores fugiat! Eveniet, sint
+    </p>
+    <div class="Contato" id="contato">
+      <h2>Contato</h2>
+      <p>WhatsApp: <a href="https://wa.me/19971361803">(19) 97136-1803</a></p>
+      <p>Email: <a href="mailto:contato@dreasy.com?subject=Dr. Easy é demais!!&cc=financeiro@dreasy.com&bcc=admnistracao@dreasy.com&body=Olá, gostaria de comprar o Dr. Easy por R$100.000.000.">contato@dreasy.com</a>  </p>
+      <p>Telefone: <a href="tel:+1933437000">(19) 3343-7000</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/#/" target="_blank">@dreasy</a></a> </p>
+    </div>
+    </div>
+
 </body>
 </html>
