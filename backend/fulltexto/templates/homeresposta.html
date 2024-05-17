@@ -4,30 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Easy</title>
-  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Certifique-se de que o caminho para o arquivo CSS está correto -->
   <link rel="icon" type="image/x-icon" href="../static/imgs/lawyer_86193.ico">
 </head>
 <body>
   <div class="background-container">
-    <div class="header">
-      <div class="logo">
-        <h2>Dr. Easy®</h2>
+    <header class="header">
+       <div class="logo">
+        <a href="#"><img src="../static/imgs/logo.png" alt="Dr. Easy Logo"></a>
+        <a id="LogoNome" href="#">Dr Easy</a>
       </div>
-    </div>
-    <div class="content">
-    </div>
-  </div>
+      <nav class="linksNav">
+        <a href="telaLogin">Login</a>
+        <a href="telaCadastro">Cadastrar</a>
+      </nav>
+    </header>
 
-  <div class="response-square">
-    <br>
-   {% if texto_atualizado %}
-    {% for texto_atualizado_obj in texto_atualizado %}
+    <section class="TrocarModelo">
+      <div class="button-container">
+        <form action="">
+          <button id="BotaoResumir">Resumir</button>
+          <select name="modelo" id="EscolhaModelo">
+            <option value="modelo_luiz">Modelo Luiz</option>
+            <option value="t5_small">T5 Small</option>
+          </select>
+        </form>
+      </div>
+    </section>
 
-        <p>{{ texto_atualizado_obj.texto_atualizado }}</p>
-    {% endfor %}
-  {% else %}
-    <p>Nenhum texto atualizado encontrado.</p>
-  {% endif %}
+    <section class="boxs">
+      <div class="output-box">
+         <!-- Exemplo de conteúdo para testar a barra de rolagem -->
+         <p>{% for texto_atualizado_obj in texto_atualizado %}
+
+
+       <p>{{ texto_atualizado_obj.texto_atualizado }}</p>
+         {% endfor %}
+</p>
+
+      </div>
+    </section>
   </div>
 </body>
 </html>

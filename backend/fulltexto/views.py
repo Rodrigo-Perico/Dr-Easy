@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import TemplateView
 from .models import Fulltexto, Textoatualizado
-from .utils import preprocessamento, extrair_melhores_frases, summerIA
+from langchain_community.document_loaders import TextLoader
+from .utils import preprocessamento, extrair_melhores_frases, summerIA, extrair_texto_docx, extrair_texto_txt,extrair_texto_pdf
 import chardet
+import fitz  # PyMuPDF para PDF
+from docx import Document  # python-docx para DOCX
+import os
 # Create your views here.
 
 class Homeresposta(TemplateView):
@@ -43,25 +47,25 @@ class Homepageupload(TemplateView):
             # Salva o arquivo no campo 'file' do modelo Fulltexto
             fulltexto.file.save(uploaded_file.name, uploaded_file)
 
-            # Leitura e processamento do arquivo
-            with uploaded_file.open('rb') as file:
-                file_content = file.read()
-                # Detectar a codificação usando chardet
-                encoding = chardet.detect(file_content)['encoding']
-                if encoding is None:
-                    # Se a codificação não for detectada, usar UTF-8 como padrão
-                    encoding = 'utf-8'
+            #ver a extencao
+            file_extension = os.path.splitext(uploaded_file.name)[-1].lower()
 
-                # Decodificar o arquivo com a codificação detectada
-                texto = file_content.decode(encoding, errors='ignore')
+            # Inicializa a variável texto
+            texto = ""
+
+            # Leitura e processamento do arquivo de acordo com a extensão
+            if file_extension == ".pdf":
+                texto = extrair_texto_pdf(uploaded_file)
+            elif file_extension == ".docx":
+                texto = extrair_texto_docx(uploaded_file)
+            elif file_extension == ".txt":
+                texto = extrair_texto_txt(uploaded_file)
 
             #salva o texto original
             fulltexto.texto_original = texto
 
             # Salva o objeto fulltexto no banco de dados
             fulltexto.save()
-
-
 
             if texto:
                 ##################### PRIMEIRO MODELO #######################################
@@ -97,4 +101,5 @@ class Homepageupload(TemplateView):
 
         # Se nenhum arquivo foi enviado, renderiza a página de upload com uma mensagem de erro
         return render(request, self.template_name, {'error_message': 'Nenhum arquivo enviado.'})
+
 

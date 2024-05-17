@@ -27,7 +27,7 @@
     <form action="/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- Campo de arquivo escondido -->
-    <input type="file" name="file" id="file-input" accept=".txt">
+    <input type="file" name="file" id="file-input">
 
     <!-- Botão estilizado para acionar o input de arquivo -->
     <button type="button" class="button-file" onclick="document.getElementById('file-input').click();">
@@ -35,7 +35,7 @@
     </button>
 
     <button type="submit">Enviar</button>
-</form>
+    </form>
     </div>
   </div>
   <div class="features-section">
