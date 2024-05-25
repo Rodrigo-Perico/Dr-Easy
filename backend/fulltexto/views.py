@@ -102,4 +102,3 @@ class Homepageupload(TemplateView):
         # Se nenhum arquivo foi enviado, renderiza a página de upload com uma mensagem de erro
         return render(request, self.template_name, {'error_message': 'Nenhum arquivo enviado.'})
 
-
