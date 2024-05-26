@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand nunito" href="home.html">
+            <a class="navbar-brand nunito" href="{% url 'homepageupload' %}">
                 <img src="../static/imgs/brand-logo.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-center">
                 Dr. Easy
             </a>
@@ -26,10 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./home.html">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./summar.html">Resumir</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'homepageupload' %}">Início</a>
                     </li>
                 </ul>
                 <!-- <div class="d-flex">
@@ -50,7 +47,16 @@
 
                     <!-- Botão estilizado para acionar o input de arquivo -->
 
-                    <button class="btn btn-lg btn-primary" type="submit">Enviar</button>
+                    <button class="btn btn-lg btn-primary" type="submit" id="btn-summarize">Enviar</button>
+                    <div class="d-none" id="btn-summar-loading">
+                        <button type="submit" class="btn btn-lg btn-primary" id="btn-spinner" disabled>
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
+                        <label for="btn-spinner">O texto está sendo resumido, isso pode levar alguns minutos.</label>
+                    </div>
+
                 </form>
         </div>
     </header>
@@ -99,5 +105,26 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
+    <script>
+        document.getElementById('btn-summarize').addEventListener('click', function() {
+            // Exibir o elemento de carregamento
+            document.getElementById('btn-summar-loading').classList.remove('d-none');
+            // Ocultar o botão "Resumir"
+            this.classList.add('d-none');
+            // Desabilitar o botão de carregamento
+            document.getElementById('btn-spinner').disabled = true;
+
+            // Simular um atraso para demonstrar o carregamento
+            setTimeout(function() {
+                // Reativar o botão de carregamento
+                document.getElementById('btn-spinner').disabled = false;
+                // Ocultar o elemento de carregamento
+                document.getElementById('btn-summar-loading').classList.add('d-none');
+                // Exibir o botão "Resumir"
+                document.getElementById('btn-summarize').classList.remove('d-none');
+            }, 300000); // Altere este valor para o tempo de carregamento desejado em milissegundos
+        });
+    </script>
 
 </html>

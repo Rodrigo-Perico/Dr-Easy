@@ -8,6 +8,14 @@ import chardet
 import fitz  # PyMuPDF para PDF
 from docx import Document  # python-docx para DOCX
 import os
+import io
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Frame, PageTemplate
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 # Create your views here.
 
 class Homeresposta(TemplateView):
@@ -102,3 +110,96 @@ class Homepageupload(TemplateView):
         # Se nenhum arquivo foi enviado, renderiza a página de upload com uma mensagem de erro
         return render(request, self.template_name, {'error_message': 'Nenhum arquivo enviado.'})
 
+
+def download_pdf(request):
+    if request.method == 'POST':
+        summarized_text = request.POST.get('summarized_text', '')
+
+        # Remove os caracteres não reconhecidos
+        summarized_text_cleaned = ''.join(filter(lambda x: x.isprintable(), summarized_text))
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="resumo.pdf"'
+
+        buffer = io.BytesIO()
+
+        # Crie um documento PDF
+        doc = SimpleDocTemplate(buffer, pagesize=letter,
+                                rightMargin=50, leftMargin=50,
+                                topMargin=50, bottomMargin=50)
+
+        # Estilos para o PDF
+        styles = getSampleStyleSheet()
+        pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))
+        styles.add(
+            ParagraphStyle(name='Justify', alignment=4, fontName='Arial', fontSize=12, leading=15, spaceAfter=12))
+
+        # Adicione o texto justificado ao documento
+        story = []
+
+        # Divida o texto em parágrafos e respeite as quebras de linha
+        paragraphs = summarized_text_cleaned.split('\n')
+
+        for para in paragraphs:
+            if para.strip():  # Verifica se o parágrafo não está vazio
+                story.append(Paragraph(para, styles['Justify']))
+            story.append(Spacer(1, 12))  # Adiciona espaçamento entre parágrafos
+
+        # Construa o PDF
+        doc.build(story)
+
+        # Salve o PDF
+        pdf = buffer.getvalue()
+        buffer.close()
+        response.write(pdf)
+
+        return response
+    else:
+        return HttpResponse("Método não permitido")
+
+    '''
+    if request.method == 'POST':
+        summarized_text = request.POST.get('summarized_text', '')
+
+        # Remove os caracteres não reconhecidos
+        summarized_text_cleaned = ''.join(filter(lambda x: x.isprintable(), summarized_text))
+
+        # Divida o texto em linhas com no máximo X caracteres por linha (por exemplo, 80 caracteres)
+        max_chars_per_line = 60
+        lines = [summarized_text_cleaned[i:i + max_chars_per_line] for i in
+                 range(0, len(summarized_text_cleaned), max_chars_per_line)]
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="resumo.pdf"'
+
+        buffer = io.BytesIO()
+        p = canvas.Canvas(buffer, pagesize=letter)
+
+        # Carregar a fonte que inclui todos os caracteres necessários
+        pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))  # Substitua 'arial.ttf' pelo caminho da sua fonte
+
+        # Defina a fonte para o texto
+        p.setFont('Arial', 12)  # Altere o tamanho da fonte conforme necessário
+
+        # Defina a posição inicial do texto
+        y = 750
+
+        # Escreva cada linha no PDF
+        for line in lines:
+            p.drawString(10, y, line)
+            y -= 12  # Ajuste para a próxima linha
+            if y < 50:  # Verifique se precisamos de uma nova página
+                p.showPage()  # Nova página
+                p.drawString(100, 750, line)  # Reescreva a linha no topo da nova página
+                y = 750  # Redefina a posição y para o topo da página
+
+        p.showPage()  # Finalize o PDF
+        p.save()
+
+        pdf = buffer.getvalue()
+        buffer.close()
+        response.write(pdf)
+
+        return response
+    else:
+        return HttpResponse("Método não permitido")'''
