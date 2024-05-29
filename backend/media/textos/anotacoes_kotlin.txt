@@ -1,0 +1,7 @@
+fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    // Atualiza a variável com a localização
+                    var latLongString =
+                        "Latitude: ${location.latitude}\nLongitude: ${location.longitude}"
+                    Log.d("Localização", latLongString)
+                }

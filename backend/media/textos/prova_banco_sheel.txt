@@ -1,0 +1,30 @@
+{$or[
+  {year: {$gte: 2000, $lte: 2002}},
+  {year: {$gte: 1900, $lte:1950}}
+]
+}
+
+{"adress.country_code": "BR"} //object
+
+//array
+
+{amenities: {$all: ["Wifi"]}}
+{amenities: {$not: {$all: ["Wifi"]}}}
+{reviews: {$gte: {$size:10}}}
+
+
+{$or:[
+  {year:{$gte: 2010}},
+  {year: {$lte:2020}}
+]}
+
+{$or:[
+  {year:{$gt: 2000}},
+  {year: {$lt:2005}}
+]}
+
+db.anuncios.aggregate([
+                     { $match: { categoria: ["TV", "TELEFONIA", "ELETRODOMÉSTICOS"} },
+                     { $group: { _id: "$categoria", total: { $multiply: ["$precoVenda", "qtdeDisponivel"] } } },
+                     { $sort: { total: -1 } }
+                   ])

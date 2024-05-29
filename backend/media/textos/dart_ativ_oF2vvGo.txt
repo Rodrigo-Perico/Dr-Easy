@@ -1,0 +1,69 @@
+Luiz Augusto Zamudio 22001073
+Victor Kurata 22011995
+
+
+import 'dart:math';
+
+
+listaAleatoria (tam){
+  var lista = [];
+  for (int i=0; i < tam; i++){
+    Random random =  Random();
+    int randomNumber = random.nextInt(100);
+    lista.add(randomNumber);
+  }
+  return lista;
+  
+}
+
+mediaLista (var lista){
+  double media = 0.00;
+  double soma = 0.00;
+  for (int i=0 ; i < lista.length; i++){
+   print(lista[i]);
+    soma += lista[i]; 
+  }
+  media = soma / lista.length; 
+  return media; 
+}
+
+maiorNumero(var lista){
+  int maior = 0;
+  if (lista.length > 0){
+      for (int i=0 ; i < lista.length; i++){
+    if (lista[i] > maior){
+      maior = lista[i];
+    }
+  }
+    return maior;
+  }
+
+  
+  return -1; 
+}
+void main() {
+ // for (int i = 0; i < 5; i++) {
+    //print('hello ${i + 1}');
+ // }
+ 
+  var list1 = listaAleatoria(10);
+  print(list1);
+  //print(list1[0].runtimeType);
+  //print(list1.length);
+  double media = mediaLista(list1);
+  print('${media.toStringAsFixed(2)}');
+  int maiorLista = maiorNumero(list1);
+  if (maiorLista > 0){
+      print('maior valor da lista é ${maiorLista}');
+  }else{
+    print("lista vazia");
+  }
+  
+
+  
+
+  
+  
+ 
+  
+}

@@ -1,0 +1,363 @@
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects
+$ git clone https://github.com/justamandd/dreasy.git
+Cloning into 'dreasy'...
+remote: Enumerating objects: 175, done.
+remote: Counting objects: 100% (175/175), done.
+remote: Compressing objects: 100% (93/93), done.
+remote: Total 175 (delta 64), reused 147 (delta 38), pack-reused 0
+Receiving objects: 100% (175/175), 317.64 KiB | 88.00 KiB/s, done.
+Resolving deltas: 100% (64/64), done.
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects
+$ cd dreasy/
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (master)
+$ git checkout dev
+Switched to a new branch 'dev'
+branch 'dev' set up to track 'origin/dev'.
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (dev)
+$ code .
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (dev)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (master)
+$ git checkout dev
+Switched to branch 'dev'
+Your branch is up to date with 'origin/dev'.
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (dev)
+$ git checkout -b backend
+Switched to a new branch 'backend'
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ cd backend/
+
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ . ./venv/Scripts/activate
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 17, 2024 - 21:03:59
+Django version 5.0.4, using settings 'dreasy.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ python manage.py runserver
+Watching for file changes with StatReloader
+
+[17/Apr/2024 21:06:25] "GET /admin/ HTTP/1.1" 200 6240
+[17/Apr/2024 21:06:31] "GET /admin/ HTTP/1.1" 200 6240
+[17/Apr/2024 21:06:33] "GET /upload/ HTTP/1.1" 200 465
+[17/Apr/2024 21:06:40] "POST /upload/ HTTP/1.1" 302 0
+[17/Apr/2024 21:06:40] "GET /resposta/ HTTP/1.1" 200 5217
+[17/Apr/2024 21:06:40] "GET /static/css/styles.css HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 17, 2024 - 21:06:04
+Django version 5.0.4, using settings 'dreasy.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ cd ..
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git add .
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git status
+On branch backend
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    backend/backend/settings.py
+        deleted:    backend/dr_env/Scripts/Activate.ps1
+        deleted:    backend/dr_env/Scripts/activate
+        deleted:    backend/dr_env/Scripts/activate.bat
+        deleted:    backend/dr_env/Scripts/deactivate.bat
+        deleted:    backend/dr_env/Scripts/django-admin.exe
+        deleted:    backend/dr_env/Scripts/pip.exe
+        deleted:    backend/dr_env/Scripts/pip3.12.exe
+        deleted:    backend/dr_env/Scripts/pip3.exe
+        deleted:    backend/dr_env/Scripts/python.exe
+        deleted:    backend/dr_env/Scripts/pythonw.exe
+        deleted:    backend/dr_env/Scripts/sqlformat.exe
+        deleted:    backend/dr_env/pyvenv.cfg
+        renamed:    backend/backend/__init__.py -> backend/dreasy/__init__.py
+        renamed:    backend/backend/asgi.py -> backend/dreasy/asgi.py
+        new file:   backend/dreasy/settings.py
+        renamed:    backend/backend/urls.py -> backend/dreasy/urls.py
+        renamed:    backend/backend/wsgi.py -> backend/dreasy/wsgi.py
+        new file:   backend/fulltexto/__init__.py
+        new file:   backend/fulltexto/admin.py
+        new file:   backend/fulltexto/apps.py
+        new file:   backend/fulltexto/migrations/0001_initial.py
+        new file:   backend/fulltexto/migrations/__init__.py
+        new file:   backend/fulltexto/models.py
+        new file:   backend/fulltexto/templates/homeresposta.html
+        new file:   backend/fulltexto/templates/homeupload.html
+        new file:   backend/fulltexto/templates/upload_success.html
+        new file:   backend/fulltexto/tests.py
+        new file:   backend/fulltexto/urls.py
+        new file:   backend/fulltexto/views.py
+        modified:   backend/manage.py
+        new file:   backend/media/textos/Curriculo_05_2022.docx
+        new file:   backend/media/textos/DJANGO_TESTE.txt
+        new file:   backend/media/textos/case_agi.docx
+        new file:   backend/media/textos/dolar.txt
+        new file:   backend/media/textos/dolar_MTTudng.txt
+        new file:   backend/media/textos/dolar_X6Qo7Fi.txt
+        new file:   backend/media/textos/jornal.txt
+        new file:   backend/media/textos/outro_texto.txt
+        new file:   backend/media/textos/outro_texto_AyRA2E9.txt
+        new file:   backend/media/textos/outro_texto_KoKwcuN.txt
+        new file:   backend/media/textos/outro_texto_WV2GCi3.txt
+        new file:   backend/media/textos/outro_texto_awW4nOK.txt
+        new file:   backend/media/textos/outro_texto_zpv3cDh.txt
+        new file:   backend/media/textos/teste_teste.txt
+        new file:   backend/media/textos/teste_teste_gYKhUX0.txt
+        new file:   backend/static/css/styles.css
+
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git commit -m "feat(backend): backend added"
+[backend acc07e1] feat(backend): backend added
+ 47 files changed, 568 insertions(+), 765 deletions(-)
+ delete mode 100644 backend/backend/settings.py
+ delete mode 100644 backend/dr_env/Scripts/Activate.ps1
+ delete mode 100644 backend/dr_env/Scripts/activate
+ delete mode 100644 backend/dr_env/Scripts/activate.bat
+ delete mode 100644 backend/dr_env/Scripts/deactivate.bat
+ delete mode 100644 backend/dr_env/Scripts/django-admin.exe
+ delete mode 100644 backend/dr_env/Scripts/pip.exe
+ delete mode 100644 backend/dr_env/Scripts/pip3.12.exe
+ delete mode 100644 backend/dr_env/Scripts/pip3.exe
+ delete mode 100644 backend/dr_env/Scripts/python.exe
+ delete mode 100644 backend/dr_env/Scripts/pythonw.exe
+ delete mode 100644 backend/dr_env/Scripts/sqlformat.exe
+ delete mode 100644 backend/dr_env/pyvenv.cfg
+ rename backend/{backend => dreasy}/__init__.py (100%)
+ rename backend/{backend => dreasy}/asgi.py (74%)
+ create mode 100644 backend/dreasy/settings.py
+ rename backend/{backend => dreasy}/urls.py (63%)
+ rename backend/{backend => dreasy}/wsgi.py (74%)
+ create mode 100644 backend/fulltexto/__init__.py
+ create mode 100644 backend/fulltexto/admin.py
+ create mode 100644 backend/fulltexto/apps.py
+ create mode 100644 backend/fulltexto/migrations/0001_initial.py
+ create mode 100644 backend/fulltexto/migrations/__init__.py
+ create mode 100644 backend/fulltexto/models.py
+ create mode 100644 backend/fulltexto/templates/homeresposta.html
+ create mode 100644 backend/fulltexto/templates/homeupload.html
+ create mode 100644 backend/fulltexto/templates/upload_success.html
+ create mode 100644 backend/fulltexto/tests.py
+ create mode 100644 backend/fulltexto/urls.py
+ create mode 100644 backend/fulltexto/views.py
+ create mode 100644 backend/media/textos/Curriculo_05_2022.docx
+ create mode 100644 backend/media/textos/DJANGO_TESTE.txt
+ create mode 100644 backend/media/textos/case_agi.docx
+ create mode 100644 backend/media/textos/dolar.txt
+ create mode 100644 backend/media/textos/dolar_MTTudng.txt
+ create mode 100644 backend/media/textos/dolar_X6Qo7Fi.txt
+ create mode 100644 backend/media/textos/jornal.txt
+ create mode 100644 backend/media/textos/outro_texto.txt
+ create mode 100644 backend/media/textos/outro_texto_AyRA2E9.txt
+ create mode 100644 backend/media/textos/outro_texto_KoKwcuN.txt
+ create mode 100644 backend/media/textos/outro_texto_WV2GCi3.txt
+ create mode 100644 backend/media/textos/outro_texto_awW4nOK.txt
+ create mode 100644 backend/media/textos/outro_texto_zpv3cDh.txt
+ create mode 100644 backend/media/textos/teste_teste.txt
+ create mode 100644 backend/media/textos/teste_teste_gYKhUX0.txt
+ create mode 100644 backend/static/css/styles.css
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git push origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git config --global user.name "lurdev"
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git config --global user.email "lusabio@hotmail.com"
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git push origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ git push origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ . ./backend/Scripts/deactivate
+bash: ./backend/Scripts/deactivate: No such file or directory
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ cd /backend
+bash: cd: /backend: No such file or directory
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ ls -la
+total 141
+drwxr-xr-x 1 Luiz Augusto 197121     0 Apr 17 20:54 ./
+drwxr-xr-x 1 Luiz Augusto 197121     0 Apr 17 20:52 ../
+drwxr-xr-x 1 Luiz Augusto 197121     0 Apr 17 21:12 .git/
+drwxr-xr-x 1 Luiz Augusto 197121     0 Apr 17 20:52 .github/
+-rw-r--r-- 1 Luiz Augusto 197121  1170 Apr 17 20:54 .gitignore
+-rw-r--r-- 1 Luiz Augusto 197121   534 Apr 17 20:52 README.md
+drwxr-xr-x 1 Luiz Augusto 197121     0 Apr 17 21:06 backend/
+-rw-r--r-- 1 Luiz Augusto 197121 15066 Apr 17 20:52 dreasy_api_doc.yaml
+-rw-r--r-- 1 Luiz Augusto 197121 69255 Apr 17 20:52 dreasy_conceitual.brM3
+-rw-r--r-- 1 Luiz Augusto 197121 35059 Apr 17 20:52 dreasy_logico.brM3
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy (backend)
+$ cd ./backend
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ ls -la
+total 177
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 21:06 ./
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:54 ../
+-rw-r--r-- 1 Luiz Augusto 197121 163840 Apr 17 21:06 db.sqlite3
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 dreasy/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 fulltexto/
+-rwxr-xr-x 1 Luiz Augusto 197121    684 Apr 17 10:22 manage.py*
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 media/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 static/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:59 venv/
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ cd dreasy/
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend/dreasy (backend)
+$ ls -la
+total 22
+drwxr-xr-x 1 Luiz Augusto 197121    0 Apr 17 20:58 ./
+drwxr-xr-x 1 Luiz Augusto 197121    0 Apr 17 21:06 ../
+-rw-r--r-- 1 Luiz Augusto 197121    0 Apr 17 10:22 __init__.py
+drwxr-xr-x 1 Luiz Augusto 197121    0 Apr 17 20:58 __pycache__/
+-rw-r--r-- 1 Luiz Augusto 197121  405 Apr 17 10:22 asgi.py
+-rw-r--r-- 1 Luiz Augusto 197121 3487 Apr 17 10:30 settings.py
+-rw-r--r-- 1 Luiz Augusto 197121 1072 Apr 17 10:30 urls.py
+-rw-r--r-- 1 Luiz Augusto 197121  405 Apr 17 10:22 wsgi.py
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend/dreasy (backend)
+$ cd ..
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ . ./venv/Scripts/deactivate
+bash: ./venv/Scripts/deactivate: No such file or directory
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ ls -la
+total 177
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 21:06 ./
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:54 ../
+-rw-r--r-- 1 Luiz Augusto 197121 163840 Apr 17 21:06 db.sqlite3
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 dreasy/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 fulltexto/
+-rwxr-xr-x 1 Luiz Augusto 197121    684 Apr 17 10:22 manage.py*
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 media/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:58 static/
+drwxr-xr-x 1 Luiz Augusto 197121      0 Apr 17 20:59 venv/
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git push origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> backend
+
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git fetch
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git branch
+* backend
+  dev
+  master
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ ^C
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$  git branch --set-upstream-to=origin/backend backend
+fatal: the requested upstream branch 'origin/backend' does not exist
+hint:
+hint: If you are planning on basing your work on an upstream
+hint: branch that already exists at the remote, you may need to
+hint: run "git fetch" to retrieve it.
+hint:
+hint: If you are planning to push out a new local branch that
+hint: will track its remote counterpart, you may want to use
+hint: "git push -u" to set the upstream config as you push.
+hint: Disable this message with "git config advice.setUpstreamFailure false"
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git push -u
+fatal: The current branch backend has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin backend
+
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ ^C
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git push --set-upstream origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git pull origin dev
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 2), reused 4 (delta 2), pack-reused 0
+Unpacking objects: 100% (4/4), 19.21 KiB | 234.00 KiB/s, done.
+From https://github.com/justamandd/dreasy
+ * branch            dev        -> FETCH_HEAD
+   167545b..a71dfc1  dev        -> origin/dev
+Merge made by the 'ort' strategy.
+ dreasy_logico.brM3 | Bin 35059 -> 34817 bytes
+ dreasy_logico.png  | Bin 0 -> 17392 bytes
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 dreasy_logico.png
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ git push origin backend
+remote: Permission to justamandd/dreasy.git denied to lurdev.
+fatal: unable to access 'https://github.com/justamandd/dreasy.git/': The requested URL returned error: 403
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$ ^C
+(venv)
+Luiz Augusto@LAPTOP-TUITDDS2 MINGW64 ~/PycharmProjects/dreasy/backend (backend)
+$

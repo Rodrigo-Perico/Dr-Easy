@@ -1,0 +1,90 @@
+Arroz integral	124
+arroz	128
+flocos de aveia	394
+biscoito maisena	443
+Biscoito recheado com chocolate	472
+Biscoito recheado de morango	471
+wafer de chocolate	502
+wafer de morango	513
+cream cracker	432
+bolo pronto aipim	324
+bolo promto chocolate	410
+bolo pronto coco	333
+bolo pronto milho	311
+cereal matinal milho	365
+cereal matinal de milho com açucar	377
+curau	78
+macarrao instantaneo	436
+milho verde enlatado	98
+pao de forma	343
+pao de forma integral	343
+pao frances	300
+pastel carne	388
+pastel de queijo	422
+pipoca	448
+torrada	377
+abobora cabotian	48
+abobora moranga	29
+abobrinha italiana	24
+acelga	21
+agriao	17
+alface americana	9
+alface crespa	11
+alface lisa	14
+alface roxa	13
+batata baroa	80
+batata doce	77
+batata chips	543
+batata inglesa	52
+batata frita	267
+batata saute	68
+berinjela	19
+beterraba	32
+biscoito polvilho	438
+brocolis	25
+cebola	20
+cenoura	30
+chuchu	19
+couve flor	19
+espinafre	67
+mandioca	125
+mandioca frita	300
+nhoque	181
+palmito juçara	23
+palmito pupunha	29
+pao de queijo	363
+ pepino	10
+quiabo	30
+rabanete	14
+repolho 	42
+rucula	13
+rabanete	14
+enlatado de legumes	57
+tomate	15
+molho de tomate	38
+abacaxi	48
+acai com guarana	110
+polpa de acai	58
+ameixa	53
+banana prata	98
+banana nanica	92
+banana ouro	112
+polpa de caju	89.8
+suco concentrado caju	45
+carambola 	46
+polpa de cupuacu	49
+figo	41
+figo em calda	184
+goiaba	52
+goiaba cascao	286
+jabuticaba	58
+kiwi	51
+laranja pera	37
+suco de laranja	41
+laranja da terra	51
+limao cravo 	14
+limao tahiti	32
+suco de limao 	22
+maca fuji	56
+mamao papaia 	40
+mamao formosa	45
